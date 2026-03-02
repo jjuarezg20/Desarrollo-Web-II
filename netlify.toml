@@ -1,1 +1,10 @@
 
+[[redirects]]
+  from = "/Gu%C3%ADa5_20235076/dist/*"
+  to = "/Gu%C3%ADa5_20235076/dist/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/Guía5_20235076/dist/*"
+  to = "/Gu%C3%ADa5_20235076/dist/index.html"
+  status = 200
