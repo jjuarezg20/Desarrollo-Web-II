@@ -3,37 +3,260 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Desarrollo Web II - Indice General</title>
+  <title>Desarrollo Web II | Landing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-1: #061626;
+      --bg-2: #0d2b45;
+      --bg-3: #113d58;
+      --card: rgba(255, 255, 255, 0.12);
+      --stroke: rgba(255, 255, 255, 0.22);
+      --text: #f4f7fb;
+      --muted: #c0d2e2;
+      --accent: #ff8a00;
+      --accent-2: #5de2e7;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 10%, #1f5d9b 0%, transparent 40%),
+        radial-gradient(circle at 85% 15%, #0f8479 0%, transparent 35%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 48%, var(--bg-3));
+      overflow-x: hidden;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(10px);
+      opacity: 0.4;
+      z-index: -1;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .orb.one {
+      width: 220px;
+      height: 220px;
+      background: #ff8a00;
+      top: -60px;
+      right: -40px;
+    }
+
+    .orb.two {
+      width: 260px;
+      height: 260px;
+      background: #5de2e7;
+      left: -80px;
+      bottom: -100px;
+      animation-delay: 2s;
+    }
+
+    .page {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      padding: 3rem 0 4rem;
+    }
+
+    .hero {
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 1px;
+      font-size: clamp(2.8rem, 8vw, 5.2rem);
+      line-height: 0.95;
+      margin-bottom: 0.7rem;
+      text-wrap: balance;
+    }
+
+    .hero p {
+      max-width: 68ch;
+      color: var(--muted);
+      font-size: 1.03rem;
+      line-height: 1.6;
+    }
+
+    .quick-links {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      text-decoration: none;
+      color: #001523;
+      font-weight: 700;
+      background: linear-gradient(120deg, var(--accent), #ffb347);
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .btn.alt {
+      background: linear-gradient(120deg, var(--accent-2), #9af7fb);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+    }
+
+    .cards {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+      animation: rise 0.7s ease both;
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.5;
+      margin-bottom: 0.9rem;
+    }
+
+    .chip {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: #e5f7ff;
+      margin-bottom: 0.9rem;
+    }
+
+    .card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .card a {
+      color: #f7fbff;
+      text-decoration: none;
+      border-bottom: 1px dashed transparent;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .card a:hover {
+      color: #fff1d6;
+      border-color: #fff1d6;
+    }
+
+    .guide-1 { grid-column: span 12; }
+    .guide-3 { grid-column: span 6; }
+    .guide-4 { grid-column: span 6; }
+
+    .footer {
+      margin-top: 1.2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+
+    @media (max-width: 800px) {
+      .guide-3,
+      .guide-4 {
+        grid-column: span 12;
+      }
+
+      .page {
+        padding-top: 2.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Guia 1 - Desarrollo Web II</h1>
-  <p>Indice general de ejercicios y complementario</p>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
 
-  <ul>
-    <li><a href="Gu%C3%ADa1_20235076/clipboard/clipboard.html">Ejercicio 01 - Clipboard</a></li>
-    <li><a href="Gu%C3%ADa1_20235076/price-card/pricing.html">Ejercicio 02 - Price Card</a></li>
-    <li><a href="Gu%C3%ADa1_20235076/login/login.html">Ejercicio 03 - Login</a></li>
-    <li><a href="Gu%C3%ADa1_20235076/productos/producto.html">Ejercicio 04 - Productos</a></li>
-    <li><a href="Gu%C3%ADa1_20235076/galeria/galeria.html">Ejercicio 05 - Galeria</a></li>
-    <li><a href="Gu%C3%ADa1_20235076/complementario/carros.html">Complementario - Carros</a></li>
-  </ul>
+  <main class="page">
+    <section class="hero card" style="animation-delay: 0.08s;">
+      <h1>Desarrollo Web II</h1>
+      <p>
+        Landing de practicas del curso con acceso rapido a cada guia publicada.
+        Incluye los enlaces directos al repositorio y al sitio en Netlify.
+      </p>
+      <div class="quick-links">
+        <a class="btn" href="https://github.com/jjuarezg20/Desarrollo-Web-II" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
+        <a class="btn alt" href="https://20235076-web2.netlify.app/" target="_blank" rel="noopener noreferrer">Sitio Netlify</a>
+      </div>
+    </section>
 
-  <hr />
+    <section class="cards">
+      <article class="card guide-1" style="animation-delay: 0.16s;">
+        <span class="chip">Guia 1 | HTML + CSS</span>
+        <h2>Ejercicios y complementario</h2>
+        <p>Practica base de maquetacion, formularios y galerias.</p>
+        <ul>
+          <li><a href="Gu%C3%ADa1_20235076/clipboard/clipboard.html">Ejercicio 01 - Clipboard</a></li>
+          <li><a href="Gu%C3%ADa1_20235076/price-card/pricing.html">Ejercicio 02 - Price Card</a></li>
+          <li><a href="Gu%C3%ADa1_20235076/login/login.html">Ejercicio 03 - Login</a></li>
+          <li><a href="Gu%C3%ADa1_20235076/productos/producto.html">Ejercicio 04 - Productos</a></li>
+          <li><a href="Gu%C3%ADa1_20235076/galeria/galeria.html">Ejercicio 05 - Galeria</a></li>
+          <li><a href="Gu%C3%ADa1_20235076/complementario/carros.html">Complementario - Carros</a></li>
+        </ul>
+      </article>
 
-  <h2>Guia 3 - React Hooks</h2>
-  <p>Aplicacion desarrollada con React + Vite</p>
-  <ul>
-    <li>
-      <a href="Guia3_20235076/Gu%C3%ADa_3/dist/index.html" target="_blank">Abrir aplicacion React (Guia 3)</a>
-    </li>
-  </ul>
+      <article class="card guide-3" style="animation-delay: 0.24s;">
+        <span class="chip">Guia 3 | React Hooks</span>
+        <h2>App de peliculas</h2>
+        <p>Aplicacion React construida con Vite y hooks personalizados.</p>
+        <ul>
+          <li><a href="Guia3_20235076/Gu%C3%ADa_3/dist/index.html" target="_blank" rel="noopener noreferrer">Abrir Guia 3</a></li>
+        </ul>
+      </article>
 
-  <h2>Guia 4 - Context API y Reducers</h2>
-  <p>Aplicacion desarrollada con React + Vite</p>
-  <ul>
-    <li>
-      <a href="Gu%C3%ADa4_20235076/dist/index.html" target="_blank">Abrir aplicacion React (Guia 4)</a>
-    </li>
-  </ul>
+      <article class="card guide-4" style="animation-delay: 0.32s;">
+        <span class="chip">Guia 4 | Context + Reducer</span>
+        <h2>Planificador de gastos</h2>
+        <p>Estado global con Context API y reducers, con filtros y persistencia.</p>
+        <ul>
+          <li><a href="Gu%C3%ADa4_20235076/dist/index.html" target="_blank" rel="noopener noreferrer">Abrir Guia 4</a></li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="footer">Ciclo 01-2026 | Proyecto academico</p>
+  </main>
 </body>
 </html>
