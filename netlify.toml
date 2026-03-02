@@ -1,3 +1,9 @@
+﻿[build]
+  command = "npm --prefix \"Guía5_20235076\" ci && npm --prefix \"Guía5_20235076\" run build"
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "22"
 
 [[redirects]]
   from = "/Gu%C3%ADa5_20235076/dist/*"
