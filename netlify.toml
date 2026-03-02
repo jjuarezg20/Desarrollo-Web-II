@@ -1,10 +1,1 @@
 
-[build]
-  base = "Guía4_20235076"
-  command = "npm run build"
-  publish = "dist"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
